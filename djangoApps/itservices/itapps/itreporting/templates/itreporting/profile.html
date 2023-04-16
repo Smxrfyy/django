@@ -1,12 +1,81 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title> Student IT Services - Profile</title>
+	<title>My Website</title>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+
+		/* Styles for the header */
+		header {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+		}
+
+		header h1 {
+			margin: 0;
+			font-size: 28px;
+		}
+
+		header a {
+			color: #fff;
+			text-decoration: none;
+			margin: 0 10px;
+			font-size: 18px;
+			flex-grow: 1;
+			text-align: center;
+		}
+
+		/* Styles for the main content */
+		main {
+			flex: 1 0 auto;
+			padding: 20px;
+		}
+
+		/* Styles for the footer */
+		footer {
+			flex-shrink: 0;
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			text-align: center;
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+	</style>
 </head>
-<div id="header">
-    <iframe src="header.html" width="100%" height="100" frameborder="0"></iframe>
-</div>
 <body>
-<h1>Welcome to Student IT Services</h1>
+	<header>
+		<h1>Electronic Products' Reviews</h1>
+		<nav>
+			<a href="home.html">Home</a>
+			<a href="about.html">About</a>
+			<a href="contact.html">Contact</a>
+			<a href="products.html">Products</a>
+			<a href="profile.html">Profile</a>
+			<a href="#">Login/Logout</a>
+		</nav>
+	</header>
+
+	<main>
+		<h3>This page is the profile page of the electronic products' reviews.</h3>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 My Website</p>
+	</footer>
+
 </body>
 </html>
