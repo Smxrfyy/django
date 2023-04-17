@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 # Create your models here.
-class review(models.Model):
+class Review(models.Model):
     type = models.CharField(max_length = 256)
     room = models.CharField(max_length = 256)
     details = models.TextField()
