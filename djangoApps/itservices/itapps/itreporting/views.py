@@ -29,7 +29,7 @@ class PostListView(ListView):
     ordering = ['-date_submitted']
     paginate_by = 5
 
-    def get_context_data(self, **kwargs):
+def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
         context.update({'title': 'List of Reviews'})
         return context
