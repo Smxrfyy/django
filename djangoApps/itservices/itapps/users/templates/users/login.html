@@ -1,7 +1,8 @@
 {% extends "itreporting/base.html" %}
 {% load crispy_forms_tags %}
 
-{% block content %}<div class="content-section">
+{% block content %}
+<div class="content-section">
     <form method="POST">
     {% csrf_token %}
         <fieldset class="form-group">
@@ -15,4 +16,5 @@
     <div class="border-top pt-3">
         <small class="text-muted">You need to create an account?<a class="ml-2" href="{% url 'register' %}">Register</a></small>
     </div>
-</div>{% endblock content %}
+</div>
+{% endblock content %}

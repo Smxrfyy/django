@@ -8,19 +8,17 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 # Create your views here.
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
 
         if form.is_valid():
             form.save()
-            messages.success(request, f'Your account has been created! Now you can login!')
+            username=form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+        return redirect('itreporting-home')
 
-            return redirect('login')
-        else:
-            messages.warning(request, 'Invalid input')
 
-            return redirect('itreporting-home')
     else:
-        form = UserRegisterForm()
+        form = UserCreationForm()
         return render(request, 'users/register.html', {'form': form, 'title': 'Register'})
 
 @login_required
