@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Review
+from .models import Product
+from django.shortcuts import render
 
 # Create your views here.
 def home(request):
@@ -39,7 +41,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Review
-    fields = ['type', 'room', 'details']
+    fields = ['author', 'product_name', 'product_rating', 'product_review', 'date_submitted']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -47,7 +49,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Review
-    fields = ['type', 'room', 'details']
+    fields = ['author', 'product_name', 'product_rating', 'product_review', 'date_submitted']
 
     def test_func(self):
         review = self.get_object()
@@ -72,3 +74,7 @@ class UserPostListView(ListView):
         username = self.kwargs.get('username'))
         return Review.objects.filter(author = user).order_by('-date_submitted')
 
+def product(request):
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'product_list.html', context)
