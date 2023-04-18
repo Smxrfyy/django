@@ -6,11 +6,12 @@
     <img class="rounded-circle article-img" src="{{review.author.profile.image.url}}"/>
     <div class="media-body">
         <div class="article-metadata">
-            <h4 class="mr-2" >Posted by <a class="mr-2" href="{% url 'itreporting-userreview' review.author.username %}">{{review.author}}</a> on {{review.date_submitted}}</h4>
+            <h4 class="mr-2" >Posted by <a class="mr-2" href="{% url 'review-detail' review.author.username %}">{{review.author}}</a> on {{review.date_submitted}}</h4>
         </div>
         <h3><a class="article-title" href="{% url 'review-detail' review.id %}">{{review.type}} Review in Room {{review.room}}</a></h3>
         <p class="article-content">{{review.details}}</p>
     </div>
 </article>
 {% endfor %}
+
 {% endblock %}

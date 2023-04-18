@@ -11,6 +11,12 @@ class Review(models.Model):
     product_rating = models.IntegerField(max_length=10)
     product_review = models.CharField(max_length=256)
     date_submitted = models.DateTimeField(default = timezone.now)
+
+    def str(self):
+            return self.author.username
+
+    def get_absolute_url(self):
+            return reverse('review-detail', kwargs={'pk': self.pk})
     
 
 class Product(models.Model):
@@ -22,14 +28,14 @@ class Product(models.Model):
     description = models.CharField(max_length=256)
     image = models.ImageField(upload_to='product_pics')
 
-    def __str__ (self):
-        return self.author
 
     def __str__ (self):
         return self.product_name
 
-    def __str__(self):
-        return self.type
 
     def get_absolute_url(self):
         return reverse('review-detail', kwargs = {'pk': self.pk})
+    
+   
+
+    

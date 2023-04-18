@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Review
-from .models import Product
+from .models import Review, Product
+
 
 
 admin.site.register(Review)
-#admin.site.product(Product)
+admin.site.register(Product)

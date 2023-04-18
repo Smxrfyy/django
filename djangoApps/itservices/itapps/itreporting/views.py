@@ -42,7 +42,6 @@ class PostDetailView(DetailView):
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Review
     fields = ['author', 'product_name', 'product_rating', 'product_review', 'date_submitted']
-
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
@@ -65,7 +64,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class UserPostListView(ListView):
     model = Review
-    template_name = 'itreporting/user_review.html'
+    template_name = 'itreporting/userreview.html'
     context_object_name = 'reviews'
     paginate_by = 5
 
@@ -73,6 +72,14 @@ class UserPostListView(ListView):
         user = get_object_or_404(User,
         username = self.kwargs.get('username'))
         return Review.objects.filter(author = user).order_by('-date_submitted')
+
+
+class PostListView2(ListView):
+    model = Product
+    template_name = 'itreporting/products.html'
+    context_object_name = 'products'
+    ordering = ['-date_released']
+    paginate_by = 5
 
 def product(request):
     products = Product.objects.all()
