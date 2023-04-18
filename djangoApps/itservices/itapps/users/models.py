@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
+from django.urls import reverse
 
 # Create your models here.
 class Profile(models.Model):
